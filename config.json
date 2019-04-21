@@ -3,7 +3,7 @@
 
   "namespace":"Stanford\\Esignature",
 
-  "description": "A module for enabling esignature on servers using shibboleth authentication",
+  "description": "A module for enabling e-signature on servers using shibboleth authentication.  Requires server modifications.",
 
   "versions": [
     {
