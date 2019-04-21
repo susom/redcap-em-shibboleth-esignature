@@ -1,0 +1,57 @@
+{
+  "name": "Shibboleth Esignature",
+
+  "namespace":"Stanford\\Esignature",
+
+  "description": "A module for enabling esignature on servers using shibboleth authentication",
+
+  "versions": [
+    {
+      "0.1.0": "Initial Development Version"
+    }
+  ],
+
+  "authors": [
+    {
+      "name": "Andy Martin",
+      "email": "andy123@stanford.edu",
+      "institution": "Stanford University"
+    }
+  ],
+
+  "permissions": [
+    "redcap_every_page_before_render",
+    "redcap_module_save_configuration",
+    "redcap_data_entry_form"
+  ],
+
+  "links": {
+    "control-center": [
+    ],
+    "project": [
+    ]
+  },
+
+  "system-settings": [
+    {
+      "key": "descriptive-text",
+      "name": "<div class='alert alert-success'>This module requires server configuration changes when initially configured to work.<br>It should be enabled for all projects (top checkbox) if you use Shibboleth.<br>See the README for details.</div>",
+      "type": "descriptive"
+    },
+    {
+      "key": "protected-web-url",
+      "name": "<b>E-signature Shibboleth Endpoint</b><br>This entry should be a relative URL on your REDCap server<br>It should be outside of your REDCap version folders.<br>e.g. <code>/esig/sign.php</code>",
+      "required": false,
+      "type": "text"
+    },
+    {
+      "key": "enable-system-debug-logging",
+      "name": "<b>Enable Debug Logging (system-wide)</b>",
+      "required": false,
+      "type": "checkbox"
+    }
+  ],
+
+  "project-settings": [
+  ]
+}
