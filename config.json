@@ -40,7 +40,7 @@
     },
     {
       "key": "protected-web-url",
-      "name": "<b>E-signature Shibboleth Endpoint</b><br>This entry should be a relative URL on your REDCap server<br>It should be outside of your REDCap version folders.<br>e.g. <code>/esig/sign.php</code>",
+      "name": "<b>E-signature Shibboleth Endpoint</b><br>This entry should be a relative URL on your REDCap server<br>It should be outside of your REDCap version folders.<br>e.g. <code>/esig/</code>",
       "required": false,
       "type": "text"
     },
