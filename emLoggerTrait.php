@@ -6,6 +6,8 @@ namespace Stanford\Esignature;
 /**
  * This trait can be use with External Modules to enable the Stanford emLogger module
  *
+ * Version 1.2
+ *
  * To use this on your project:
  * 1) simply add this trait to your EM project root
  * 2) change the NAMESPACE of this file to match that of your EM
