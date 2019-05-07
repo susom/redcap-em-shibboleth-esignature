@@ -2,9 +2,8 @@
 namespace Stanford\Esignature;
 /** @var \Stanford\Esignature\Esignature $this */
 
-
 /**
- * This trait can be use with External Modules to enable the Stanford emLogger module
+ * This trait can be used with External Modules to enable the Stanford emLogger module
  *
  * Version 1.2
  *
@@ -15,29 +14,29 @@ namespace Stanford\Esignature;
  * 4) Inside your class, before your first function, insert: use emLoggerTrait;
  * 5) (optional) Modify your config.json to include these two optional debug settings
 
-  (OPTIONAL) INSERT THESE OPTIONS INTO THE CONFIG.JSON
+(OPTIONAL) INSERT THESE OPTIONS INTO THE CONFIG.JSON
 
-  "system-settings": [
+"system-settings": [
 
-    {
-      "key": "enable-system-debug-logging",
-      "name": "<b>Enable Debug Logging (system-wide)</b><i>(optional)</i> Requires installation and configuration of emLogger",
-      "required": false,
-      "type": "checkbox"
-    },
+{
+"key": "enable-system-debug-logging",
+"name": "<b>Enable Debug Logging (system-wide)</b><i>(optional)</i> Requires installation and configuration of emLogger",
+"required": false,
+"type": "checkbox"
+},
 
-  ],
+],
 
-  "project-settings": [
+"project-settings": [
 
-    {
-      "key": "enable-project-debug-logging",
-      "name": "<b>Enable Debug Logging</b><br><i>(optional)</i> Requires installation and configuration of emLogger",
-      "required": false,
-      "type": "checkbox"
-    },
+{
+"key": "enable-project-debug-logging",
+"name": "<b>Enable Debug Logging</b><br><i>(optional)</i> Requires installation and configuration of emLogger",
+"required": false,
+"type": "checkbox"
+},
 
-   ],
+],
 
  */
 
@@ -110,7 +109,7 @@ trait emLoggerTrait
      * Wrapper for logging debug statements
      */
     function emDebug() {
-       if ( $this->emLoggerDebugMode() && ($emLogger = $this->emLoggerInstance()) ) $emLogger->emLog($this->PREFIX, func_get_args(), "DEBUG");
+        if ( $this->emLoggerDebugMode() && ($emLogger = $this->emLoggerInstance()) ) $emLogger->emLog($this->PREFIX, func_get_args(), "DEBUG");
     }
 
 }
