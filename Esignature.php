@@ -199,11 +199,4 @@ class Esignature extends \ExternalModules\AbstractExternalModule
 
     }
 
-    /**
-     *  TBD?
-     */
-    public function redcap_module_save_configuration() {
-
-    }
-
 }

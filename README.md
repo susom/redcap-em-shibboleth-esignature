@@ -1,4 +1,5 @@
 # REDCap E-Signature for Shibboleth
+
 When you use shibboleth as your authentication method, REDCap can't really do much 
 in terms of verifying identity since it is handled by the server.
 
@@ -14,7 +15,14 @@ user who just verified their identity using the more strict endpoint.
 
 ## How to Configure your Server
 
-In order to create two different session timeout settings with Shibboleth/SAML, I added an application override entity to my Shibboleth2.xml file, registered the entity with my SPDB, and configured a new endpoint to use this entity.
+This module requires server alterations in order to work and is somewhat complex.  Please read carefully and first implement on a development server.  Please post any questions as issues to the github repository here https://github.com/susom/redcap-em-shibboleth-esignature/issues
+
+The first step to configuring is to create a new ApplicatoinID in Shibboleth that has reduced user session timeouts.  This will force the signing user to re-authenticate.
+
+In order to create two different session timeout settings with one Shibboleth/SAML, I added an application override entity to my Shibboleth2.xml file, registered the entity with my SPDB, and configured a new endpoint to use this entity.  The endpoint is the url on the server that will be protected with this more stringent timeout.
+
+In my case, if a user goes to /esig/ they will have a 60 second timeout.
+If they goto /redcap_v1.2.3/home.php they will have an 8 hour timeout.
 
 ### Adding a new Entity to your Shibboleth configuration
 Assuming you have a working shibboleth configuration, you have a Shibboleth2.xml file (maybe in `/etc/shibboleth/Shibboleth2.xml`)
@@ -55,10 +63,10 @@ Assuming you have a working shibboleth configuration, you have a Shibboleth2.xml
 ### Registering Metadata with your Service Provider Database
 Okay - now that I modified my Shibboleth2.xml, I had to restart my apache/shib services on the server and then obtain the new MetaData for this entity.  This was obtained by visiting `https://myserver/esig/Shibboleth.sso/Metadata`.  This prompted me to download the metadata file.
 
-Next, I registered this Metadata file with our Service Provider Database (SPDB at Stanford).  Make sure the entityID matches the entityID you specify above.  We have to wait about 15 minutes for these to take effect.
+Next, I registered this Metadata file with our Service Provider Database (SPDB at Stanford).  Make sure the entityID matches the entityID you specify above.  We have to wait about 15 minutes for our IDP to reload before I could test that this change took effect.
 
 ### Update your Apache configuration to apply this entity to a directory
-I create a new directory on my web server of of the web root, something like `/var/www/html/esig/`.
+Next, I created a new directory on my web server of of the web root, something like `/var/www/html/esig/`.
 
 In the apache configuration I bound this new directory to the shibboleth entity on the server:
 ```
@@ -70,11 +78,11 @@ In the apache configuration I bound this new directory to the shibboleth entity 
 </Location>
 ```
 
-So, any visitor to the /esig/ directory on our server (or any child directories) will be forced to authenticate through the esig applicationId.
+So, any visitor to the /esig/ directory on our server (or any child directories) will be forced to authenticate through the esig applicationId which was configured with the shorter session above.
 
 #### Testing
 
-To see if my sessions were indeed renewing every 60 seconds as configured, I was able to create a file inside the `/esig/` folder called test.php that contained something like this:
+To see if my sessions were indeed renewing every 60 seconds as configured, I temporarily created a file inside the `/esig/` folder called test.php that contained something like this:
 ```php
 <?php
 /** ESIGNATURE TEST PAGE **/
@@ -121,4 +129,3 @@ So, with all of this complete, you should then enable this external module on yo
 You must also specify the web path (relative url) on your server to the file above.  In my case, it was `/esign/` or could be `/esign/index.php`.  
 
 Optionally, if you have emLogger installed, you can enable the debug logging.
-
