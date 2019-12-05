@@ -35,7 +35,7 @@
   "system-settings": [
     {
       "key": "descriptive-text",
-      "name": "<div class='alert alert-success'>This module requires server configuration changes and potentially registration with your institution\'s identity provider database.  Please review the full documentation on the <a href='https://github.com/susom/redcap-em-shibboleth-esignature' target='_BLANK'>github</a> for installation details.<br>It should be enabled for all projects (top checkbox) once configured.</div>",
+      "name": "<div class='alert alert-success'>This module requires server configuration changes and potentially registration with your institutions identity provider database.  Please review the full documentation on the <a href='https://github.com/susom/redcap-em-shibboleth-esignature' target='_BLANK'>github</a> for installation details.<br>It should be enabled for all projects (top checkbox) once configured.</div>",
       "type": "descriptive"
     },
     {
