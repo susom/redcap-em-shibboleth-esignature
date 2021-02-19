@@ -157,7 +157,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
                 $this->emDebug($this->PREFIX . " active on $instrument for record $record, event $event_id, #$repeat_instance");
                 $this->applyOverrides();
             } else {
-		        $this->emDebug("Shibboleth mode but $instrument doesn't support e-signatures");
+		        // $this->emDebug("Shibboleth mode but $instrument doesn't support e-signatures");
             }
 		} else {
 		    $this->emDebug("we are not in shibboleth auth mode for project $project_id");
