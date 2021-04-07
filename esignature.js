@@ -192,7 +192,7 @@ ShibEsig.openWindow = function(url, title) {
  * A logging function for javascript
  */
 ShibEsig.log = function() {
-    if (!sessionChecker.jsLog) return false;
+    if (!ShibEsig.jsLog) return false;
 
     // Make console logging more resilient to Redmond
     try {
