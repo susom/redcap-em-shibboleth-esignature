@@ -32,7 +32,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
 
             // Find the token in the log:
             // $this->emDebug($this->getQueryLogsSql("select timestamp, verify_id, hash where hash='" . db_real_escape_string($hash) . "'"));
-            $q = $this->queryLogs("select timestamp, verify_id, hash where hash='" . db_real_escape_string($hash) . "'");
+            $q = $this->queryLogs("select timestamp, verify_id, hash where hash = ?", db_real_escape_string($hash) );
 
             if (db_num_rows($q) === 0) {
                 // Not found!
