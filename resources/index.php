@@ -1,7 +1,8 @@
+
 <?php
 /** @var \Stanford\Esignature\Esignature $module */
 
-// A COPYT OF THIS FILE BELONGS IN YOUR ESIG DIRECTORY PER THE README INSTRUCTIONS
+// A COPY OF THIS FILE BELONGS IN YOUR ESIG DIRECTORY PER THE README INSTRUCTIONS
 
 // Shibboleth does the authentication - we don't need REDCap to do anything here
 define('NOAUTH',true);

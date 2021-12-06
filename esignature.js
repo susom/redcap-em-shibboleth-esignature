@@ -138,7 +138,7 @@ ShibEsig.sign = function() {
             // Login failed
             // See if we forced an error message back
             try {
-                msg = JSON.parse(data);
+                let msg = JSON.parse(data);
                 if (msg.hasOwnProperty('error')) {
                     simpleDialog('<div class="red text-center">' + msg.error + '</div>', "E-signature Error");
                 }

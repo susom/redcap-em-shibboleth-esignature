@@ -2,7 +2,7 @@
 /** @var \Stanford\Esignature\Esignature $module */
 /** @var string $shibboleth_username_field */
 
-// Lets record that this user successfully logged into REDCap in a way that doesn't pass the secret through to the client
+// Let's record that this user successfully logged into REDCap in a way that doesn't pass the secret through to the client
 
 // Get the shibboleth identity who has just verified into this page
 $verify_id = getenv($shibboleth_username_field);
