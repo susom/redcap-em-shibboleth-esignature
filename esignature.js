@@ -124,18 +124,22 @@ ShibEsig.sign = function() {
     }, function(data) {
         ShibEsig.log("Result is " + data + " and user is " + ShibEsig.user_id);
         ShibEsig.popup.dialog('close');
-        if (data == "1") {
-            // If response=1, e-signature was saved
+        if (data != "") {
+            // Response is now the record_id (as of REDCap 12.5.4) / commit 8cab9f081311b705267514bdce17b55232568485
+            // e-signature was saved
             ShibEsig.numLogins = 0;
             // Submit the form if saving e-signature
             if (ShibEsig.lock_action === 'lock' || ShibEsig.lock_action == '') {
+                // Just in case we're using auto-numbering and current ID does not reflect saved ID (due to simultaneous users),
+                // change the record value on the page in all places.
+                if (auto_inc_set && getParameterByName('auto') == '1' && isinteger(data.replace('-',''))) {
+                    $('#form :input[name="'+table_pk+'"], #form :input[name="__old_id__"]').val(data);
+                }
+                // Submit the form
                 formSubmitDataEntry();
             } else {
                 setUnlocked("save");
             }
-        } else if (data == "2") {
-            // If response=2, then a php/sql error occurred
-            alert("An error has occurred.");
         } else {
             // Login failed
             // See if we forced an error message back
@@ -146,7 +150,7 @@ ShibEsig.sign = function() {
                 }
             } catch (e) {
                 // return isn't json
-                ShibEsig.log("Response", data);
+                ShibEsig.log("Debug Response", data);
             }
 
             // Increment the number of failed logins
