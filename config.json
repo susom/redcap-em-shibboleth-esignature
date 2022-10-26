@@ -21,6 +21,8 @@
     }
   ],
 
+  "framework-version": 10,
+
   "permissions": [
     "redcap_every_page_before_render",
     "redcap_data_entry_form"
