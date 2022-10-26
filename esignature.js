@@ -122,7 +122,7 @@ ShibEsig.sign = function() {
         shib_auth_token: ShibEsig.auth_token,   // this is the log id we will use to verify
         no_auth_key:     'q4deAr8s'     	    // this bypasses the standard auth mechanism
     }, function(data) {
-        ShibEsig.log("Result is " + data + " and user is " . ShibEsig.user_id);
+        ShibEsig.log("Result is " + data + " and user is " + ShibEsig.user_id);
         ShibEsig.popup.dialog('close');
         if (data == "1") {
             // If response=1, e-signature was saved
