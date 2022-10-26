@@ -111,16 +111,18 @@ ShibEsig.sign = function() {
     const url =
     $.post(app_path_webroot+"Locking/single_form_action.php?pid="+pid,
     {
+        auto:            getParameterByName('auto'),
+        instance:        getParameterByName('instance'),
         esign_action:    "save", 	            // this must be true or we wouldn't be here
-        username:        ShibEsig.user_id,      // if someone were to override this, it would get caught server-side and blocked
-        shib_auth_token: ShibEsig.auth_token,   // this is the log id we will use to verify
-        action:          ShibEsig.lock_action,  //
-        no_auth_key:     'q4deAr8s',     	    // this bypasses the standard auth mechanism
         event_id:        event_id,
+        action:          ShibEsig.lock_action,  //
+        username:        ShibEsig.user_id,      // if someone were to override this, it would get caught server-side and blocked
         record:          getParameterByName('id'),
         form_name:       getParameterByName('page'),
-        instance:        getParameterByName('instance')
+        shib_auth_token: ShibEsig.auth_token,   // this is the log id we will use to verify
+        no_auth_key:     'q4deAr8s'     	    // this bypasses the standard auth mechanism
     }, function(data) {
+        ShibEsig.log("Result is " + data + " and user is " . ShibEsig.user_id);
         ShibEsig.popup.dialog('close');
         if (data == "1") {
             // If response=1, e-signature was saved
