@@ -122,10 +122,10 @@ ShibEsig.sign = function() {
         shib_auth_token: ShibEsig.auth_token,   // this is the log id we will use to verify
         no_auth_key:     'q4deAr8s'     	    // this bypasses the standard auth mechanism
     }, function(data) {
-        ShibEsig.log("Result is " + data + " and user is " + ShibEsig.user_id);
         ShibEsig.popup.dialog('close');
         if (data != "") {
             // Response is now the record_id (as of REDCap 12.5.4) / commit 8cab9f081311b705267514bdce17b55232568485
+            // ShibEsig.log("Result is " + data + " and record is " + getParameterByName('id'));
             // e-signature was saved
             ShibEsig.numLogins = 0;
             // Submit the form if saving e-signature
