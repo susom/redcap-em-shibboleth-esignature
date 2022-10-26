@@ -28,7 +28,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
         if (PAGE == 'Locking/single_form_action.php' && !empty($_POST['shib_auth_token']) && $auth_meth == "shibboleth")
         {
             // Get the log token:
-            $hash = $_POST['shib_auth_token'];
+            $hash = htmlspecialchars($_POST['shib_auth_token'], ENT_QUOTES);
 
             // Find the token in the log:
             // $this->emDebug($this->getQueryLogsSql("select timestamp, verify_id, hash where hash='" . db_real_escape_string($hash) . "'"));
