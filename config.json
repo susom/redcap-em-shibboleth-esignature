@@ -9,7 +9,8 @@
     {
       "0.1.0": "Initial Development Version",
       "1.0.1": "Initial Release to REDCap Repo",
-      "1.0.4": "Patch for redcap versions 12.5.4 and above where return from single_form_action ajax call was changed"
+      "1.0.4": "Patch for redcap versions 12.5.4 and above where return from single_form_action ajax call was changed",
+      "1.0.6": "Updated input parsing"
     }
   ],
 
