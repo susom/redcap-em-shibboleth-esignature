@@ -116,7 +116,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
      */
     public function removeHash($hash)
     {
-        $q = $this->removeLogs("hash='" . db_real_escape_string($hash) . "'");
+        $q = $this->removeLogs("hash=?", [db_real_escape_string($hash)]);
         $rows = db_affected_rows();
         if ($rows == 0) {
             $this->emLog("Unable to remove hash $hash");
