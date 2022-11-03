@@ -32,7 +32,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
 
             // Find the token in the log:
             // $this->emDebug($this->getQueryLogsSql("select timestamp, verify_id, hash where hash='" . db_real_escape_string($hash) . "'"));
-            $q = $this->queryLogs("select timestamp, verify_id, hash where hash = ?", db_real_escape_string($hash) );
+            $q = $this->queryLogs("select timestamp, verify_id, hash where hash = ?", [db_real_escape_string($hash)] );
 
             if (db_num_rows($q) === 0) {
                 // Not found!
@@ -131,7 +131,7 @@ class Esignature extends \ExternalModules\AbstractExternalModule
      */
     public function purgeOldHashes() {
         // Get all hashes older than PURGE_HASHES_OLDER_THAN seconds
-        $q = $this->queryLogs("select timestamp, hash");
+        $q = $this->queryLogs("select timestamp, hash", []);
         $old_hashes = 0;
         $now = strtotime("now");
         while ($row = db_fetch_assoc($q)) {
